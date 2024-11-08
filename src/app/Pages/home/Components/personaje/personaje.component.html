@@ -1,0 +1,28 @@
+<p>PERSONAJE ELEGIDO</p>
+<div class="grid gap-y-8 grid-cols-1 md:grid-cols-3 place-items-center items-center w-full">
+    <div *ngFor="let item of personaje; let i = index" class="mt-10 grid grid-cols-4 gap-4 hover:bg-[#2a2828] duration-100 cursor-pointer">
+      <div>
+        <img [src]="item.image" alt="">
+  
+        <div class="gap-11">
+          <p>{{ item.name }}</p>
+          <p>{{ item.race }}</p>
+  
+          <div>
+            <p>Base ki</p>
+            <p>{{ item.ki }}</p>
+          </div>
+  
+          <div>
+            <p>Total ki</p>
+            <p>{{ item.ki }}</p>
+          </div>
+  
+          <div>
+            <p>Affiliation</p> 
+            <p>{{ item.affilation }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

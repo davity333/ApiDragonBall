@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Apiinterface} from '../../models/apiinterface';
-import { Personaje } from '../../models/apiinterface';
+import { Apiinterface, Personaje} from '../../models/apiinterface';
 import { ApiService } from '../../services/api.service';
 import { OnInit } from '@angular/core';
 import { tap } from 'rxjs';
@@ -13,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './personaje.component.css'
 })
 export class PersonajeComponent implements OnInit {
-  personaje: Personaje[] = []; 
+  personaje: any[] = []; 
 
   constructor(private apiService: ApiService ) {}
   
@@ -21,16 +20,15 @@ export class PersonajeComponent implements OnInit {
   ngOnInit(): void{
     this.number = this.apiService.getId();
     
-    console.log("el numeor que pasastes es" + this.number);
+    console.log("el numero que pasastes es" + this.number);
     this.apiService.getCharacter(this.number).pipe(
       tap({
         next: (response) => {
-          console.log(response); 
-          if (response && response.items) {
-            this.personaje = response.items;
+          if (response) {
+            this.personaje = response;
             console.log("este es el personaje")
-
-            alert(response.items)
+            console.log(this.personaje); 
+            alert(JSON.stringify(this.personaje))
           } else {
             console.error('No se encontraron items en la respuesta');
           }

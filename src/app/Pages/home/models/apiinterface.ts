@@ -27,9 +27,3 @@ export interface Personaje {
     name: string;
     race: string;
 }
-
-export interface Personajeitems {
-    items: Personaje[]; 
-    meta?: any;   
-    links?: any;     
-}
